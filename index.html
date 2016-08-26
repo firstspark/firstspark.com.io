@@ -330,7 +330,7 @@
 <p>3.这样配置后每次deploy后github上的CNAME会被清空，需要重新配置实在不便。解决方法：从github仓库Download ZIP，解压，找到CNAME文件，修改成需设置的域名，如果已配置域名则文件不需修改，然后放进Hexo\source目录下，提交上去，就OK了。</p>
 <h2 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h2><p>网上有很多hexo的主题，最终选择了 NexT.Pisces，感觉还不错，较清新，而且适合国内使用习惯。<br>1.下载：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> your-hexo-site</div><div class="line">$ git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</div></pre></td></tr></table></figure></p>
 <p>2.配置：<br>  修改主配置文件：theme: next  ；修改主题配置文件：scheme: Pisces<br>  其他配置：修改菜单，左侧栏，头像；增加多说评论；增加阅读次数（LeanCloud)</p>
-<p>3.优化<br>  a.更换google字体库<br>  修改主题配置文件：host: fonts.useso.com</p>
+<p>3.优化<br>  a.更换google字体库<br>  修改主题配置文件：host: //fonts.useso.com</p>
 <h2 id="写文章"><a href="#写文章" class="headerlink" title="写文章"></a>写文章</h2><p>文章是用markdown格式的，可用markdownpad 软件，选择use free，分左右对比，书写较为方便；每次写完文章后运行$ hexo d -g进行发布。</p>
 <p>参考：<br><a href="http://blog.csdn.net/jzooo/article/details/46781805" target="_blank" rel="external">http://blog.csdn.net/jzooo/article/details/46781805</a><br><a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="external">http://theme-next.iissnan.com/getting-started.html</a></p>
 
