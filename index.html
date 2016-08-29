@@ -338,6 +338,17 @@
 <p>4.用 [ 文字](链接) 的格式为中括号内的文字添加一段链接。插入图片时，在前者的开头加上 ! 即可，即 ![ 可选文字](图片链接)。</p>
 <p>5.Markdown 支持无序列表和有序列表，你可以使用 * 作为列表标记生成无序列表，或是用数字加英语句号的组合 1. 来生成有序列表。</p>
 <p>6.空白行中输入 * * * 来生成分割线。</p>
+<h2 id="多台电脑同步"><a href="#多台电脑同步" class="headerlink" title="多台电脑同步"></a>多台电脑同步</h2><p>1.新开一个版本库，存放src:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$git</span> init</div><div class="line"><span class="variable">$git</span> remote add origin &lt;server&gt;</div><div class="line"><span class="variable">$git</span> add .  <span class="comment">#添加blog目录下所有文件，注意有个`.`（`.gitignore`声明过的文件不包含在内)</span></div><div class="line"><span class="variable">$git</span> commit -m <span class="string">"first commit"</span> <span class="comment">#添加更新说明</span></div><div class="line"><span class="variable">$git</span> push -u origin master <span class="comment">#推送更新到云端服务器</span></div><div class="line">(git rm -r --cached .)</div></pre></td></tr></table></figure></p>
+<p>2.备份_config.yml文件，保密考虑，单独处理<br>3.另台机器处理方式：</p>
+<pre><code>$git init
+$git remote add origin &lt;server&gt; #将本地文件和云端仓库映射起来。这步不可以跳过
+$git fetch --all
+$git reset --hard origin/master
+------
+$ cnpm install -g hexo-cli  
+$ cnpm install hexo --save
+$cnpm install
+</code></pre><p>4.之后，两台机器使用是先进行src版本库的同步(git pull origin master)，然后编辑，然后进行hexo d -g. 发布后再将编辑的src版本库同步服务器（$git add . $git commit -m “xxxx” $git push -u origin master）</p>
 <p>参考：<br><a href="http://blog.csdn.net/jzooo/article/details/46781805" target="_blank" rel="external">http://blog.csdn.net/jzooo/article/details/46781805</a><br><a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="external">http://theme-next.iissnan.com/getting-started.html</a></p>
 
           

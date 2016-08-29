@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="技术博客">
 <meta property="og:description" content="环境搭建1.注册github帐号拥有github网站帐号后，新建一个版本库，拥有了一个版本库链接，后面会用到，并启用GitHub Page，添加自己的域名（二级域名也可以）
 2.在本地安装hexo环境a.安装git，起初用的cygwin自带的git命令，为自己挖了坑（搭建环境过程一切顺利，当hexo deploy 提交到github时，到输入username就卡住了，死活输入不进去，后重新下载ST">
-<meta property="og:updated_time" content="2016-08-29T02:49:55.489Z">
+<meta property="og:updated_time" content="2016-08-29T07:56:26.237Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo+github快速搭建个人博客">
 <meta name="twitter:description" content="环境搭建1.注册github帐号拥有github网站帐号后，新建一个版本库，拥有了一个版本库链接，后面会用到，并启用GitHub Page，添加自己的域名（二级域名也可以）
@@ -335,6 +335,17 @@
 <p>4.用 [ 文字](链接) 的格式为中括号内的文字添加一段链接。插入图片时，在前者的开头加上 ! 即可，即 ![ 可选文字](图片链接)。</p>
 <p>5.Markdown 支持无序列表和有序列表，你可以使用 * 作为列表标记生成无序列表，或是用数字加英语句号的组合 1. 来生成有序列表。</p>
 <p>6.空白行中输入 * * * 来生成分割线。</p>
+<h2 id="多台电脑同步"><a href="#多台电脑同步" class="headerlink" title="多台电脑同步"></a>多台电脑同步</h2><p>1.新开一个版本库，存放src:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$git</span> init</div><div class="line"><span class="variable">$git</span> remote add origin &lt;server&gt;</div><div class="line"><span class="variable">$git</span> add .  <span class="comment">#添加blog目录下所有文件，注意有个`.`（`.gitignore`声明过的文件不包含在内)</span></div><div class="line"><span class="variable">$git</span> commit -m <span class="string">"first commit"</span> <span class="comment">#添加更新说明</span></div><div class="line"><span class="variable">$git</span> push -u origin master <span class="comment">#推送更新到云端服务器</span></div><div class="line">(git rm -r --cached .)</div></pre></td></tr></table></figure></p>
+<p>2.备份_config.yml文件，保密考虑，单独处理<br>3.另台机器处理方式：</p>
+<pre><code>$git init
+$git remote add origin &lt;server&gt; #将本地文件和云端仓库映射起来。这步不可以跳过
+$git fetch --all
+$git reset --hard origin/master
+------
+$ cnpm install -g hexo-cli  
+$ cnpm install hexo --save
+$cnpm install
+</code></pre><p>4.之后，两台机器使用是先进行src版本库的同步(git pull origin master)，然后编辑，然后进行hexo d -g. 发布后再将编辑的src版本库同步服务器（$git add . $git commit -m “xxxx” $git push -u origin master）</p>
 <p>参考：<br><a href="http://blog.csdn.net/jzooo/article/details/46781805" target="_blank" rel="external">http://blog.csdn.net/jzooo/article/details/46781805</a><br><a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="external">http://theme-next.iissnan.com/getting-started.html</a></p>
 
       
@@ -481,7 +492,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境搭建"><span class="nav-number">1.</span> <span class="nav-text">环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-注册github帐号"><span class="nav-number">1.1.</span> <span class="nav-text">1.注册github帐号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-在本地安装hexo环境"><span class="nav-number">1.2.</span> <span class="nav-text">2.在本地安装hexo环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-本地运行hexo"><span class="nav-number">1.3.</span> <span class="nav-text">3.本地运行hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-本地配置"><span class="nav-number">1.4.</span> <span class="nav-text">4.本地配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-发布博客"><span class="nav-number">1.5.</span> <span class="nav-text">5.发布博客</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绑定独立的二级域名"><span class="nav-number">2.</span> <span class="nav-text">绑定独立的二级域名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更换主题"><span class="nav-number">3.</span> <span class="nav-text">更换主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写文章"><span class="nav-number">4.</span> <span class="nav-text">写文章</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境搭建"><span class="nav-number">1.</span> <span class="nav-text">环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-注册github帐号"><span class="nav-number">1.1.</span> <span class="nav-text">1.注册github帐号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-在本地安装hexo环境"><span class="nav-number">1.2.</span> <span class="nav-text">2.在本地安装hexo环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-本地运行hexo"><span class="nav-number">1.3.</span> <span class="nav-text">3.本地运行hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-本地配置"><span class="nav-number">1.4.</span> <span class="nav-text">4.本地配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-发布博客"><span class="nav-number">1.5.</span> <span class="nav-text">5.发布博客</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绑定独立的二级域名"><span class="nav-number">2.</span> <span class="nav-text">绑定独立的二级域名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更换主题"><span class="nav-number">3.</span> <span class="nav-text">更换主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写文章"><span class="nav-number">4.</span> <span class="nav-text">写文章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多台电脑同步"><span class="nav-number">5.</span> <span class="nav-text">多台电脑同步</span></a></li></ol></div>
             
           </div>
         </section>
