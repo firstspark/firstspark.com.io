@@ -234,6 +234,156 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/09/sip-basic-call-flow/" itemprop="url">
+                  SIP协议基本呼叫流程
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-09T12:47:36+08:00" content="2016-09-09">
+              2016-09-09
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/09/sip-basic-call-flow/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/09/sip-basic-call-flow/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/09/09/sip-basic-call-flow/" class="leancloud_visitors" data-flag-title="SIP协议基本呼叫流程">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="SIP呼叫流程"><a href="#SIP呼叫流程" class="headerlink" title="SIP呼叫流程"></a>SIP呼叫流程</h2><p> 下图显示了一个SIP会话的基本呼叫流程。<br><img src="http://img.blog.csdn.net/20160909113447585" alt="SIP Call Flow"></p>
+<p>下面是上述呼叫流程的详细解释：</p>
+<ul>
+<li><p>Alice发送INVITE请求到代理服务器，INVITE请求负责发起会话。</p>
+</li>
+<li><p>代理服务器立即发送Trying 100给请求者(Alice)，表示试图响应INVITE请求，以防止重传该INVITE请求。</p>
+</li>
+<li><p>代理服务器搜索Bob所在位置服务器的地址，得到的地址后，将转发INVITE请求到Bob。</p>
+</li>
+<li><p>此后，Bob回应180 Ringing(临时响应)，并转发180 Ringing(临时响应)给Alice。</p>
+</li>
+<li><p>Bob接通电话，200 OK响应随即产生，并发送给代理服务器，再由代理服务器转发给Alice。</p>
+</li>
+<li><p>当Alice端收到200 OK消息后，发送ACK，以确认消息。</p>
+</li>
+<li><p>至此，RTP媒体流建立完成，Alice和Bob开始对话。</p>
+</li>
+<li><p>谈话结束后，任何参与者(甲和乙)可以发送一个BYE请求终止会话。</p>
+</li>
+<li><p>BYE可以绕过代理服务器（或由代理服务器转发），比如从Alice发送给Bob。</p>
+</li>
+<li><p>Bob接收到BYE消息后，发送200 OK响应，以确认BYE消息，并结束会话。</p>
+</li>
+<li><p>另外，在上述的基本呼叫流程，有3次握手(标记为1，2，3)。</p>
+</li>
+</ul>
+<p>完整的呼叫(从INVITE到200 OK)被称为一次对话。</p>
+<h2 id="SIP跨域呼叫流程"><a href="#SIP跨域呼叫流程" class="headerlink" title="SIP跨域呼叫流程"></a>SIP跨域呼叫流程</h2><p>如何从一个代理服务器的用户呼叫到另一个代理服务器的用户呢？我们可以用下图来解释。<br><img src="http://img.blog.csdn.net/20160909113123991" alt="SIP Trapezoid"></p>
+<p>图中示出的拓扑结构称为SIP梯形。该过程发生如下：</p>
+<ul>
+<li><p>当主叫方发起呼叫，INVITE消息被发送到代理服务器。一旦接收到INVITE时，代理服务器将利用DNS服务器查找该被叫方的地址。</p>
+</li>
+<li><p>获取到下一跳地址后，主叫方的代理服务器（Proxy1，也称为呼出代理服务器）转发INVITE请求到被叫方的代理服务器（Proxy2，也称为入站代理服务器）。</p>
+</li>
+<li><p>入站代理服务器接触位置服务器，以获取到被叫方的地址信息。</p>
+</li>
+<li><p>从位置服务器获得信息后，将转发该呼叫到其目的地，即被叫方。</p>
+</li>
+<li><p>一旦用户代理知道他们的地址后，他们可以实现直接对话了。</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/06/sip-network-elements/" itemprop="url">
                   SIP协议网络角色定义
                 </a>
@@ -1061,7 +1211,7 @@ $cnpm install
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
