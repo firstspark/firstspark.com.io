@@ -1,0 +1,984 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="-SIP -VOIP," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="多媒体通信研发" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="SIP响应是由一个用户代理服务器(UAS)或SIP服务器生成回复由客户端生成的请求的消息。它可能是一个正式的确认，以防止请求由UAC重发。
+
+响应可能包含需要一个UAC信息一些额外的头字段
+
+SIP有六个响应
+
+1xx - 5xx已经借由HTTP，而6xx系列在SIP介绍。
+
+1XX被认为是一个临时响应，其余的最终响应。
+类 别  |     描述 |动作—–|——–|—-1xx  |">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SIP协议响应代码">
+<meta property="og:url" content="http://firstspark.github.io/2016/09/12/sip-call-code/index.html">
+<meta property="og:site_name" content="多媒体通信研发">
+<meta property="og:description" content="SIP响应是由一个用户代理服务器(UAS)或SIP服务器生成回复由客户端生成的请求的消息。它可能是一个正式的确认，以防止请求由UAC重发。
+
+响应可能包含需要一个UAC信息一些额外的头字段
+
+SIP有六个响应
+
+1xx - 5xx已经借由HTTP，而6xx系列在SIP介绍。
+
+1XX被认为是一个临时响应，其余的最终响应。
+类 别  |     描述 |动作—–|——–|—-1xx  |">
+<meta property="og:image" content="http://img.blog.csdn.net/20160912164342978">
+<meta property="og:updated_time" content="2016-09-12T08:44:16.028Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SIP协议响应代码">
+<meta name="twitter:description" content="SIP响应是由一个用户代理服务器(UAS)或SIP服务器生成回复由客户端生成的请求的消息。它可能是一个正式的确认，以防止请求由UAC重发。
+
+响应可能包含需要一个UAC信息一些额外的头字段
+
+SIP有六个响应
+
+1xx - 5xx已经借由HTTP，而6xx系列在SIP介绍。
+
+1XX被认为是一个临时响应，其余的最终响应。
+类 别  |     描述 |动作—–|——–|—-1xx  |">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20160912164342978">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://firstspark.github.io/2016/09/12/sip-call-code/"/>
+
+  <title> SIP协议响应代码 | 多媒体通信研发 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">多媒体通信研发</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">记录点点滴滴</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                SIP协议响应代码
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-12T09:17:36+08:00" content="2016-09-12">
+              2016-09-12
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/12/sip-call-code/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/12/sip-call-code/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/09/12/sip-call-code/" class="leancloud_visitors" data-flag-title="SIP协议响应代码">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>  SIP响应是由一个用户代理服务器(UAS)或SIP服务器生成回复由客户端生成的请求的消息。它可能是一个正式的确认，以防止请求由UAC重发。</p>
+<ul>
+<li><p>响应可能包含需要一个UAC信息一些额外的头字段</p>
+</li>
+<li><p>SIP有六个响应</p>
+</li>
+<li><p>1xx - 5xx已经借由HTTP，而6xx系列在SIP介绍。</p>
+</li>
+<li><p>1XX被认为是一个临时响应，其余的最终响应。</p>
+<p>类 别  |     描述 |动作<br>—–|——–|—-<br>1xx  |    信息     |这表明调用之前完成也被称为临时响应的状态。<br>2xx&nbsp;&nbsp;&nbsp;  |成功     |请求已成功。如果这是一个邀请，确认应发送;否则，停止请求的重发。<br>3xx  |重定向     |服务器返回的可能位置。客户端应该重试另一个服务器的请求。<br>4xx     |客户端错误     |请求已经由客户端失败，原因是一个错误。客户端可以重试请求，如果它是根据响应拟订。<br>5xx     |服务器故障     |请求已经由该服务器失败，原因是一个错误。请求可以在另一台服务器退出。<br>6xx      |全局失败     |请求已失败。该请求不应该在这个或其他服务器再次尝试。</p>
+</li>
+</ul>
+<h2 id="信息-1xx"><a href="#信息-1xx" class="headerlink" title="信息(1xx)"></a>信息(1xx)</h2><p>信息(1xx)响应用于指示呼叫过程。通常情况下，响应是端对端（除100尝试）。信息(1xx)的响应的主要目的是阻止INVITE请求的重发。</p>
+<p>信息响应包括以下响应：</p>
+<h3 id="100-Trying-尝试"><a href="#100-Trying-尝试" class="headerlink" title="100 Trying (尝试)"></a>100 Trying (尝试)</h3><ul>
+<li><p>这种特殊的情况下的响应仅仅是一个逐跳请求。</p>
+</li>
+<li><p>它永远不会转发，不得包含消息体。</p>
+</li>
+<li><p>它被用于避免INVITE请求的重传。</p>
+</li>
+</ul>
+<h3 id="180-Ringing-响铃"><a href="#180-Ringing-响铃" class="headerlink" title="180  Ringing (响铃)"></a>180  Ringing (响铃)</h3><ul>
+<li>此响应被用来指示用户代理已经接收到INVITE消息，并且正在电话振铃。</li>
+</ul>
+<h3 id="181-Call-is-Being-Forwarded-呼叫被转发"><a href="#181-Call-is-Being-Forwarded-呼叫被转发" class="headerlink" title="181 Call is Being Forwarded (呼叫被转发)"></a>181 Call is Being Forwarded (呼叫被转发)</h3><ul>
+<li><p>此响应用于指示该呼叫已被转发到另一端。</p>
+</li>
+<li><p>当主叫需要此响应消息时才被发送。</p>
+</li>
+<li><p>此响应告诉主叫，由于转发操作会导致应答时间变长。</p>
+</li>
+</ul>
+<h3 id="182-Call-Queued-呼叫队列"><a href="#182-Call-Queued-呼叫队列" class="headerlink" title="182 Call Queued (呼叫队列)"></a>182 Call Queued (呼叫队列)</h3><ul>
+<li>此响应被用来指示该INVITE消息已经接收到，并且将在队列进行处理。</li>
+</ul>
+<h3 id="183-Session-Progress-会话进度"><a href="#183-Session-Progress-会话进度" class="headerlink" title="183 Session Progress (会话进度)"></a>183 Session Progress (会话进度)</h3><ul>
+<li><p>它指示本次会话的进度信息可以存在于消息主体或媒体流中。</p>
+</li>
+<li><p>不像100 Trying的尝试响应，183是端对端的响应，并且会实际性的建立起一个对话。</p>
+</li>
+<li><p>一个典型的应用环境是让UAC通过落地网关进入PSTN网络，并让主叫听到手机铃声，或忙音，或通话录音的通知音。（此消息也是电话铃音透传的关键）</p>
+</li>
+</ul>
+<h2 id="成功-2xx"><a href="#成功-2xx" class="headerlink" title="成功(2xx)"></a>成功(2xx)</h2><p>此类响应是用于指示一个请求已被接受。它包括以下响应：</p>
+<h3 id="200-OK"><a href="#200-OK" class="headerlink" title="200 OK"></a>200 OK</h3><ul>
+<li>200 OK用于接受会话邀请。</li>
+<li>它表示成功完成的请求或接受请求。</li>
+</ul>
+<h3 id="202-Accepted-接受"><a href="#202-Accepted-接受" class="headerlink" title="202 Accepted (接受)"></a>202 Accepted (接受)</h3><ul>
+<li><p>表示该UAS已经接收并理解了请求，但该请求可能没有被授权或正在由服务器处理。</p>
+</li>
+<li><p>它是常用来响应SUBSCRIBE消息，REFER消息。</p>
+</li>
+</ul>
+<h2 id="重定向-3xx"><a href="#重定向-3xx" class="headerlink" title="重定向(3xx)"></a>重定向(3xx)</h2><p>通常这类响应是由重定向服务器发送，来响应INVITE消息的。它们也被称为重定向类响应。它包括以下响应：</p>
+<h3 id="300-Multiple-Choices-多重选择"><a href="#300-Multiple-Choices-多重选择" class="headerlink" title="300 Multiple Choices (多重选择)"></a>300 Multiple Choices (多重选择)</h3><ul>
+<li>它包含多个联系人的报头字段，说明该位置服务器返回多个可能的位置，并在Request-URI中用多个SIP URI表示。</li>
+</ul>
+<h3 id="301-Moved-Permanently-永久移动"><a href="#301-Moved-Permanently-永久移动" class="headerlink" title="301 Moved Permanently (永久移动)"></a>301 Moved Permanently (永久移动)</h3><ul>
+<li><p>这种重定向响应在Contact头字段中包含着被叫方的新的永久性的URI。</p>
+</li>
+<li><p>位置地址可以被保存，并在以后的INVITE请求中使用。</p>
+</li>
+</ul>
+<h3 id="302-Moved-Temporarily-临时移动"><a href="#302-Moved-Temporarily-临时移动" class="headerlink" title="302 Moved Temporarily (临时移动)"></a>302 Moved Temporarily (临时移动)</h3><ul>
+<li><p>该响应包含一个URI，该URI是当前有效的，但不是永久的。</p>
+</li>
+<li><p>也就是该URI位置地址在指定的特殊时间内是有效的 。</p>
+</li>
+</ul>
+<h3 id="305-Use-Proxy-使用代理"><a href="#305-Use-Proxy-使用代理" class="headerlink" title="305 Use Proxy (使用代理)"></a>305 Use Proxy (使用代理)</h3><ul>
+<li><p>这个响应包含一个URI，该URI指向具有对呼叫方有认证信息的代理服务器。</p>
+</li>
+<li><p>这种响应可以由发出来电的UAS代理服务器发送。</p>
+</li>
+</ul>
+<h3 id="380-Alternative-Service-可替代服务"><a href="#380-Alternative-Service-可替代服务" class="headerlink" title="380 Alternative Service (可替代服务)"></a>380 Alternative Service (可替代服务)</h3><ul>
+<li><p>这个响应返回一个URI，该URI指示被叫方希望的服务类型。</p>
+</li>
+<li><p>例如，一个通话可以被重新定向到一个语音信箱的服务。</p>
+</li>
+</ul>
+<h2 id="客户端错误-4xx"><a href="#客户端错误-4xx" class="headerlink" title="客户端错误(4xx)"></a>客户端错误(4xx)</h2><p>客户端错误的响应表明，由于UAC端的一些错误使得请求不能得到满足。响应代码通常由UAS来发送。客户端在接收到出错消息时，应该基于该响应的描述进行修改并重新发送。下面讨论的是一些重要的客户端错误的响应。</p>
+<h3 id="400-Bad-Request-错误的请求"><a href="#400-Bad-Request-错误的请求" class="headerlink" title="400 Bad Request (错误的请求)"></a>400 Bad Request (错误的请求)</h3><ul>
+<li><p>这表明该请求不被服务器理解。</p>
+</li>
+<li><p>请求可能是缺少必要的头字段，例如To, From, Call-ID, 或 CSeq。</p>
+</li>
+</ul>
+<h3 id="401-Unauthorized-未经授权"><a href="#401-Unauthorized-未经授权" class="headerlink" title="401 Unauthorized (未经授权)"></a>401 Unauthorized (未经授权)</h3><ul>
+<li><p>说明该请求要求用户进行认证。</p>
+</li>
+<li><p>401 Unauthorized 通常回应的是注册请求，由代理服务器发送。</p>
+</li>
+<li><p>该响应包含WWW-Authenticate身份验证头字段，该字段表明从主叫那里获得正确的凭据请求。</p>
+</li>
+<li><p>随后，REGISTER将重发，并包含着用户的正确的凭据。</p>
+</li>
+</ul>
+<p><img src="http://img.blog.csdn.net/20160912164342978" alt="401_unauthorized.jpg"></p>
+<h3 id="403-Forbidden-禁止"><a href="#403-Forbidden-禁止" class="headerlink" title="403 Forbidden (禁止)"></a>403 Forbidden (禁止)</h3><ul>
+<li><p>403 Forbidden 说明代理服务器已经理解请求，并正确匹配请求，但不能提供该请求的服务。</p>
+</li>
+<li><p>这种响应在需要授权时不能使用。</p>
+</li>
+</ul>
+<h3 id="404-Not-Found-未找到"><a href="#404-Not-Found-未找到" class="headerlink" title="404 Not Found (未找到)"></a>404 Not Found (未找到)</h3><ul>
+<li>404 Not Found表明在服务器中没有找到该请求URI标识中的SIP URI用户。</li>
+</ul>
+<h3 id="405-Method-Not-Allowed-不允许的方法"><a href="#405-Method-Not-Allowed-不允许的方法" class="headerlink" title="405 Method Not Allowed (不允许的方法)"></a>405 Method Not Allowed (不允许的方法)</h3><ul>
+<li><p>说明服务器或用户代理已收到并理解该请求，但不能执行该请求。</p>
+</li>
+<li><p>例如：当注册请求被发送到用户代理端时，用户代理可响应405。</p>
+</li>
+<li><p>在消息头中，Allow 域是必需的，它告诉UAC什么方法是可以接受的。</p>
+</li>
+</ul>
+<h3 id="406-Not-Acceptable-不接受"><a href="#406-Not-Acceptable-不接受" class="headerlink" title="406 Not Acceptable (不接受)"></a>406 Not Acceptable (不接受)</h3><ul>
+<li><p>该响应说明不能按照该请求消息中的规定来处理。</p>
+</li>
+<li><p>在请求中的Accept头域中没有包含UAS支持的任何选项。</p>
+</li>
+</ul>
+<h3 id="407-Proxy-Authentication-Required-需要代理身份验证"><a href="#407-Proxy-Authentication-Required-需要代理身份验证" class="headerlink" title="407 Proxy Authentication Required (需要代理身份验证)"></a>407 Proxy Authentication Required (需要代理身份验证)</h3><ul>
+<li><p>由代理服务器发送该请求说明UAC必须首先验证自身的请求后才可以被处理。</p>
+</li>
+<li><p>响应消息的Proxy-Authenticate头字段中应包含所需凭据的类型信息。</p>
+</li>
+<li><p>该请求可以被重新提交，并在Proxy-Authenticate头字段中包含正确的凭据。</p>
+</li>
+</ul>
+<h3 id="408-Request-Timeout-请求超时"><a href="#408-Request-Timeout-请求超时" class="headerlink" title="408 Request Timeout (请求超时)"></a>408 Request Timeout (请求超时)</h3><ul>
+<li><p>当响应时间超过INVITE请求的Expires头域字段中指定的时间段时，该响应被发送。</p>
+</li>
+<li><p>它可以由代理服务器或用户代理发送。</p>
+</li>
+<li><p>该请求可以在任何时候由UAC重试。</p>
+</li>
+</ul>
+<h3 id="422-Session-Timer-Interval-Too-Small-会话定时器间隔太小"><a href="#422-Session-Timer-Interval-Too-Small-会话定时器间隔太小" class="headerlink" title="422 Session Timer Interval Too Small (会话定时器间隔太小)"></a>422 Session Timer Interval Too Small (会话定时器间隔太小)</h3><ul>
+<li><p>该响应被用来处理拒绝含有Session-Expires头字段的请求。</p>
+</li>
+<li><p>允许的最小间隔被表示在所请求的Min-SE头字段中。</p>
+</li>
+<li><p>主叫方可以重新尝试，当没有会话Expires头字段或间隔时间值大于或等于规定的最小值时。</p>
+</li>
+</ul>
+<h3 id="423-Interval-Too-Brief-间隔太短"><a href="#423-Interval-Too-Brief-间隔太短" class="headerlink" title="423 Interval Too Brief (间隔太短)"></a>423 Interval Too Brief (间隔太短)</h3><ul>
+<li><p>该响应说明在请求中设置的资源刷新时间(或者有效时间)过短，可以用于代理服务器来拒绝那些Contact头域有效期过短的注册请求。</p>
+</li>
+<li><p>该响应必须包含Min-Expires头域并指出最小有效期，该注册者应该接受并修改。</p>
+</li>
+</ul>
+<h3 id="480-Temporarily-Unavailable-暂时不可用"><a href="#480-Temporarily-Unavailable-暂时不可用" class="headerlink" title="480 Temporarily Unavailable (暂时不可用)"></a>480 Temporarily Unavailable (暂时不可用)</h3><ul>
+<li><p>该响应说明请求已正确到达被叫方，但因被叫方有一些暂时不可用的原因而拒绝。</p>
+</li>
+<li><p>该响应应包含一个Retry-After头，表明何时请求可以得到满足。</p>
+</li>
+</ul>
+<h3 id="481-Dialog-Transaction-Does-Not-Exist-对话-事务不存在"><a href="#481-Dialog-Transaction-Does-Not-Exist-对话-事务不存在" class="headerlink" title="481 Dialog/Transaction Does Not Exist (对话/事务不存在)"></a>481 Dialog/Transaction Does Not Exist (对话/事务不存在)</h3><ul>
+<li>该响应说明UAS接收到请求，但是没有和现存的对话或者事务匹配。</li>
+</ul>
+<h3 id="483-Too-Many-Hops-太多的跳数"><a href="#483-Too-Many-Hops-太多的跳数" class="headerlink" title="483 Too Many Hops (太多的跳数)"></a>483 Too Many Hops (太多的跳数)</h3><ul>
+<li><p>此响应说明请求已被转发的次数已达到上限，该判断由请求的Max-Forwards头来设置。</p>
+</li>
+<li><p>请求中Max-Forward：0，即数值为0来表示达到最大转发。</p>
+</li>
+</ul>
+<h3 id="486-Busy-Here-忙，占线"><a href="#486-Busy-Here-忙，占线" class="headerlink" title="486 Busy Here (忙，占线)"></a>486 Busy Here (忙，占线)</h3><ul>
+<li>该响应说明用户代理正在忙，不能接受呼叫。</li>
+</ul>
+<h3 id="487-Request-Terminated-请求终止"><a href="#487-Request-Terminated-请求终止" class="headerlink" title="487 Request Terminated (请求终止)"></a>487 Request Terminated (请求终止)</h3><ul>
+<li><p>该响应会被发送，当用户CANCEL来结束INVITE请求时。</p>
+</li>
+<li><p>200 OK消息用来确认CANCEL消息，用487 Request Terminated来取消INVITE请求。</p>
+</li>
+</ul>
+<h2 id="服务器故障-5xx"><a href="#服务器故障-5xx" class="headerlink" title="服务器故障 (5xx)"></a>服务器故障 (5xx)</h2><p>此类响应说明因服务器中的错误而不能处理发来的请求。显然对有效的请求服务器也无法完成。此类响应可包含一个Retry-After头字段，用来表明可以在其它地址进行重试，因为没有在请求中表明请求的错误，所以智能采用重试方法。一些重要的服务器故障响应如下。</p>
+<h3 id="500-Server-Internal-Error-服务器内部错误"><a href="#500-Server-Internal-Error-服务器内部错误" class="headerlink" title="500 Server Internal Error (服务器内部错误)"></a>500 Server Internal Error (服务器内部错误)</h3><ul>
+<li><p>500表示服务器发生了某种错误，从而不能处理请求。</p>
+</li>
+<li><p>它是一种服务器故障，指示客户端过一段时间后可以再次重试请求。</p>
+</li>
+</ul>
+<h3 id="501-Not-Implemented-未实现"><a href="#501-Not-Implemented-未实现" class="headerlink" title="501 Not Implemented (未实现)"></a>501 Not Implemented (未实现)</h3><ul>
+<li><p>它表明服务器无法执行，因为它不支持处理该请求。</p>
+</li>
+<li><p>该响应被用来拒绝含有未知方法的请求。</p>
+</li>
+</ul>
+<h3 id="502-Bad-Gateway-错误的网关"><a href="#502-Bad-Gateway-错误的网关" class="headerlink" title="502 Bad Gateway (错误的网关)"></a>502 Bad Gateway (错误的网关)</h3><ul>
+<li><p>如果服务器作为网关或者代理存在，从下行服务器上接收到了一个非法的应答（这个应答对应的请求是本服务器为了完成请求而转发给下行服务器的）</p>
+</li>
+<li><p>这表明有其他的一些网络问题使请求不能被处理。</p>
+</li>
+</ul>
+<h3 id="503-Service-Unavailable-暂停服务"><a href="#503-Service-Unavailable-暂停服务" class="headerlink" title="503 Service Unavailable (暂停服务)"></a>503 Service Unavailable (暂停服务)</h3><ul>
+<li><p>该响应说明所请求的服务是暂时不可用。</p>
+</li>
+<li><p>服务器可以在应答中增加一个Retry-After来让客户端重试这个请求。客户端在Retry-After头字段期满之后才能进行重试。</p>
+</li>
+</ul>
+<h3 id="504-Gateway-Timeout-网关超时"><a href="#504-Gateway-Timeout-网关超时" class="headerlink" title="504 Gateway Timeout (网关超时)"></a>504 Gateway Timeout (网关超时)</h3><ul>
+<li><p>该响应说明服务器在一个外部服务器上没有收到一个及时的应答。这个外部服务器是本服务器用来访问处理这个请求所需要的。如果从上行服务器上收到的请求中的Expires头域超时，那么应当返回一个408（Request TimeOut）错误。</p>
+</li>
+<li><p>它是一个服务器错误类响应，是因为服务器访问SIP网络以外的资源未能得到响应引起的。</p>
+</li>
+</ul>
+<h3 id="505-Version-Not-Supported-版本不支持"><a href="#505-Version-Not-Supported-版本不支持" class="headerlink" title="505 Version Not Supported (版本不支持)"></a>505 Version Not Supported (版本不支持)</h3><ul>
+<li><p>该响应说明服务器不支持对应的SIP版本。</p>
+</li>
+<li><p>目前SIP2.0版是唯一的实现版本。</p>
+</li>
+</ul>
+<h3 id="513-Message-Too-Large-消息过大"><a href="#513-Message-Too-Large-消息过大" class="headerlink" title="513  Message Too Large (消息过大)"></a>513  Message Too Large (消息过大)</h3><ul>
+<li>此响应说明无法处理请求，因为消息长度超过了处理的长度。</li>
+</ul>
+<h3 id="580-Preconditions-Failure-前提条件失败"><a href="#580-Preconditions-Failure-前提条件失败" class="headerlink" title="580 Preconditions Failure (前提条件失败)"></a>580 Preconditions Failure (前提条件失败)</h3><ul>
+<li>此响应说明SDP中需要的前提条件不能得到满足而拒绝请求。</li>
+</ul>
+<h2 id="全局错误-6xx"><a href="#全局错误-6xx" class="headerlink" title="全局错误 (6xx)"></a>全局错误 (6xx)</h2><p>此响应类表示服务器知道该请求无论怎样尝试都将会失败，所以，该请求不应该被发送到其他地方。</p>
+<p>这意味这服务器给特定用户有一个最终的信息，并不只是在Request-URI的特定实例有最终信息。 一些重要的响应的如下：</p>
+<h3 id="600-Busy-Everywhere-任意占线"><a href="#600-Busy-Everywhere-任意占线" class="headerlink" title="600 Busy Everywhere (任意占线)"></a>600 Busy Everywhere (任意占线)</h3><ul>
+<li>只有当终端系统知道没有其他终端节点（比如语音邮箱系统）能 够访问到这个用户的时候才能使用这个应答。否则应当返回一个486（Busy Here）的应答。</li>
+</ul>
+<h3 id="603-Decline-拒绝"><a href="#603-Decline-拒绝" class="headerlink" title="603 Decline (拒绝)"></a>603 Decline (拒绝)</h3><ul>
+<li>该响应表明被叫方占线，或者干脆不希望接通呼叫。</li>
+</ul>
+<h3 id="604-Does-Not-Exist-Anywhere-不存在任何地方"><a href="#604-Does-Not-Exist-Anywhere-不存在任何地方" class="headerlink" title="604 Does Not Exist Anywhere (不存在任何地方)"></a>604 Does Not Exist Anywhere (不存在任何地方)</h3><ul>
+<li><p>该响应类似于404未找到的响应，但表示在Request-URI中的用户不能在任何地方找到。</p>
+</li>
+<li><p>该反应应该仅由具有访问所有相关用户信息的服务器发送。</p>
+</li>
+</ul>
+<h3 id="606-Not-Acceptable-不接受"><a href="#606-Not-Acceptable-不接受" class="headerlink" title="606 Not Acceptable (不接受)"></a>606 Not Acceptable (不接受)</h3><ul>
+<li><p>该响应说明成功联系到一个UA,但是会话描述的一些部分比如请求的媒体，带宽，或者地址类型不被接收。</p>
+</li>
+<li><p>该响应意味着用户希望通讯，但是不能充分支持会话描述。</p>
+</li>
+<li><p>可以在Warning头域中包含一个原因列表，用于解释为何会话描述不能被支持。</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SIP-VOIP/" rel="tag">#-SIP -VOIP</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/09/sip-basic-call-flow/" rel="next" title="SIP协议基本呼叫流程">
+                <i class="fa fa-chevron-left"></i> SIP协议基本呼叫流程
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/09/12/sip-call-code/"
+           data-title="SIP协议响应代码" data-url="http://firstspark.github.io/2016/09/12/sip-call-code/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="VVSIP" />
+          <p class="site-author-name" itemprop="name">VVSIP</p>
+          <p class="site-description motion-element" itemprop="description">工作学习记录</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#信息-1xx"><span class="nav-number">1.</span> <span class="nav-text">信息(1xx)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#100-Trying-尝试"><span class="nav-number">1.1.</span> <span class="nav-text">100 Trying (尝试)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#180-Ringing-响铃"><span class="nav-number">1.2.</span> <span class="nav-text">180  Ringing (响铃)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#181-Call-is-Being-Forwarded-呼叫被转发"><span class="nav-number">1.3.</span> <span class="nav-text">181 Call is Being Forwarded (呼叫被转发)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#182-Call-Queued-呼叫队列"><span class="nav-number">1.4.</span> <span class="nav-text">182 Call Queued (呼叫队列)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#183-Session-Progress-会话进度"><span class="nav-number">1.5.</span> <span class="nav-text">183 Session Progress (会话进度)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#成功-2xx"><span class="nav-number">2.</span> <span class="nav-text">成功(2xx)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#200-OK"><span class="nav-number">2.1.</span> <span class="nav-text">200 OK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#202-Accepted-接受"><span class="nav-number">2.2.</span> <span class="nav-text">202 Accepted (接受)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重定向-3xx"><span class="nav-number">3.</span> <span class="nav-text">重定向(3xx)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#300-Multiple-Choices-多重选择"><span class="nav-number">3.1.</span> <span class="nav-text">300 Multiple Choices (多重选择)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#301-Moved-Permanently-永久移动"><span class="nav-number">3.2.</span> <span class="nav-text">301 Moved Permanently (永久移动)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#302-Moved-Temporarily-临时移动"><span class="nav-number">3.3.</span> <span class="nav-text">302 Moved Temporarily (临时移动)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#305-Use-Proxy-使用代理"><span class="nav-number">3.4.</span> <span class="nav-text">305 Use Proxy (使用代理)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#380-Alternative-Service-可替代服务"><span class="nav-number">3.5.</span> <span class="nav-text">380 Alternative Service (可替代服务)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端错误-4xx"><span class="nav-number">4.</span> <span class="nav-text">客户端错误(4xx)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#400-Bad-Request-错误的请求"><span class="nav-number">4.1.</span> <span class="nav-text">400 Bad Request (错误的请求)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#401-Unauthorized-未经授权"><span class="nav-number">4.2.</span> <span class="nav-text">401 Unauthorized (未经授权)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#403-Forbidden-禁止"><span class="nav-number">4.3.</span> <span class="nav-text">403 Forbidden (禁止)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#404-Not-Found-未找到"><span class="nav-number">4.4.</span> <span class="nav-text">404 Not Found (未找到)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#405-Method-Not-Allowed-不允许的方法"><span class="nav-number">4.5.</span> <span class="nav-text">405 Method Not Allowed (不允许的方法)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#406-Not-Acceptable-不接受"><span class="nav-number">4.6.</span> <span class="nav-text">406 Not Acceptable (不接受)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#407-Proxy-Authentication-Required-需要代理身份验证"><span class="nav-number">4.7.</span> <span class="nav-text">407 Proxy Authentication Required (需要代理身份验证)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#408-Request-Timeout-请求超时"><span class="nav-number">4.8.</span> <span class="nav-text">408 Request Timeout (请求超时)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#422-Session-Timer-Interval-Too-Small-会话定时器间隔太小"><span class="nav-number">4.9.</span> <span class="nav-text">422 Session Timer Interval Too Small (会话定时器间隔太小)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#423-Interval-Too-Brief-间隔太短"><span class="nav-number">4.10.</span> <span class="nav-text">423 Interval Too Brief (间隔太短)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#480-Temporarily-Unavailable-暂时不可用"><span class="nav-number">4.11.</span> <span class="nav-text">480 Temporarily Unavailable (暂时不可用)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#481-Dialog-Transaction-Does-Not-Exist-对话-事务不存在"><span class="nav-number">4.12.</span> <span class="nav-text">481 Dialog/Transaction Does Not Exist (对话/事务不存在)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#483-Too-Many-Hops-太多的跳数"><span class="nav-number">4.13.</span> <span class="nav-text">483 Too Many Hops (太多的跳数)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#486-Busy-Here-忙，占线"><span class="nav-number">4.14.</span> <span class="nav-text">486 Busy Here (忙，占线)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#487-Request-Terminated-请求终止"><span class="nav-number">4.15.</span> <span class="nav-text">487 Request Terminated (请求终止)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器故障-5xx"><span class="nav-number">5.</span> <span class="nav-text">服务器故障 (5xx)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#500-Server-Internal-Error-服务器内部错误"><span class="nav-number">5.1.</span> <span class="nav-text">500 Server Internal Error (服务器内部错误)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#501-Not-Implemented-未实现"><span class="nav-number">5.2.</span> <span class="nav-text">501 Not Implemented (未实现)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#502-Bad-Gateway-错误的网关"><span class="nav-number">5.3.</span> <span class="nav-text">502 Bad Gateway (错误的网关)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#503-Service-Unavailable-暂停服务"><span class="nav-number">5.4.</span> <span class="nav-text">503 Service Unavailable (暂停服务)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#504-Gateway-Timeout-网关超时"><span class="nav-number">5.5.</span> <span class="nav-text">504 Gateway Timeout (网关超时)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#505-Version-Not-Supported-版本不支持"><span class="nav-number">5.6.</span> <span class="nav-text">505 Version Not Supported (版本不支持)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#513-Message-Too-Large-消息过大"><span class="nav-number">5.7.</span> <span class="nav-text">513  Message Too Large (消息过大)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#580-Preconditions-Failure-前提条件失败"><span class="nav-number">5.8.</span> <span class="nav-text">580 Preconditions Failure (前提条件失败)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全局错误-6xx"><span class="nav-number">6.</span> <span class="nav-text">全局错误 (6xx)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#600-Busy-Everywhere-任意占线"><span class="nav-number">6.1.</span> <span class="nav-text">600 Busy Everywhere (任意占线)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#603-Decline-拒绝"><span class="nav-number">6.2.</span> <span class="nav-text">603 Decline (拒绝)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#604-Does-Not-Exist-Anywhere-不存在任何地方"><span class="nav-number">6.3.</span> <span class="nav-text">604 Does Not Exist Anywhere (不存在任何地方)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#606-Not-Acceptable-不接受"><span class="nav-number">6.4.</span> <span class="nav-text">606 Not Acceptable (不接受)</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">VVSIP</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"vvsip"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("h28EQpXsTd2W5ns9q8loHJc6-gzGzoHsz", "pJaTQDEkM8K930IgEXtugxYt");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
