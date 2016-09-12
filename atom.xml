@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://firstspark.github.io/"/>
-  <updated>2016-09-12T08:44:16.028Z</updated>
+  <updated>2016-09-12T10:03:03.451Z</updated>
   <id>http://firstspark.github.io/</id>
   
   <author>
@@ -20,20 +20,60 @@
     <link href="http://firstspark.github.io/2016/09/12/sip-call-code/"/>
     <id>http://firstspark.github.io/2016/09/12/sip-call-code/</id>
     <published>2016-09-12T01:17:36.000Z</published>
-    <updated>2016-09-12T08:44:16.028Z</updated>
+    <updated>2016-09-12T10:03:03.451Z</updated>
     
-    <content type="html"><![CDATA[<p>  SIP响应是由一个用户代理服务器(UAS)或SIP服务器生成回复由客户端生成的请求的消息。它可能是一个正式的确认，以防止请求由UAC重发。</p>
+    <content type="html"><![CDATA[<p>  SIP响应是由用户代理服务器(UAS)生成或由客户端生成来回应服务器请求的消息。它是一个正式的回复确认，以防止UAC重发请求。</p>
 <ul>
-<li><p>响应可能包含需要一个UAC信息一些额外的头字段</p>
+<li><p>响应可能需要包含一些额外的头字段</p>
 </li>
-<li><p>SIP有六个响应</p>
+<li><p>SIP有六类响应</p>
 </li>
-<li><p>1xx - 5xx已经借由HTTP，而6xx系列在SIP介绍。</p>
+<li><p>1xx - 5xx是借用HTTP协议，而6xx是在SIP中介绍。</p>
 </li>
 <li><p>1XX被认为是一个临时响应，其余的最终响应。</p>
-<p>类 别  |     描述 |动作<br>—–|——–|—-<br>1xx  |    信息     |这表明调用之前完成也被称为临时响应的状态。<br>2xx&nbsp;&nbsp;&nbsp;  |成功     |请求已成功。如果这是一个邀请，确认应发送;否则，停止请求的重发。<br>3xx  |重定向     |服务器返回的可能位置。客户端应该重试另一个服务器的请求。<br>4xx     |客户端错误     |请求已经由客户端失败，原因是一个错误。客户端可以重试请求，如果它是根据响应拟订。<br>5xx     |服务器故障     |请求已经由该服务器失败，原因是一个错误。请求可以在另一台服务器退出。<br>6xx      |全局失败     |请求已失败。该请求不应该在这个或其他服务器再次尝试。</p>
 </li>
 </ul>
+<table>
+<thead>
+<tr>
+<th>类 别</th>
+<th>描述</th>
+<th>动作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> 1xx</td>
+<td>信息</td>
+<td>用来只是呼叫完成前的状态，也被称为临时响应。</td>
+</tr>
+<tr>
+<td>2xx&nbsp;&nbsp;&nbsp;</td>
+<td>成功</td>
+<td>请求处理成功。如果是INVITE消息的，应回应ACK消息;否则表示停止重发请求。</td>
+</tr>
+<tr>
+<td>3xx</td>
+<td>重定向</td>
+<td>服务器返回可用的位置。客户端应该重试请求到另一个服务器上。</td>
+</tr>
+<tr>
+<td>4xx</td>
+<td>客户端错误</td>
+<td>请求失败，由于客户端的错误。客户端可以根据响应修改请求并重试。</td>
+</tr>
+<tr>
+<td>5xx</td>
+<td>服务器故障</td>
+<td>请求失败，由于服务器的错误。请求可以向另一台服务器重试。</td>
+</tr>
+<tr>
+<td>6xx</td>
+<td>全局失败</td>
+<td>请求失败。是全局性错误，该请求不应该向其他服务器再次尝试。</td>
+</tr>
+</tbody>
+</table>
 <h2 id="信息-1xx"><a href="#信息-1xx" class="headerlink" title="信息(1xx)"></a>信息(1xx)</h2><p>信息(1xx)响应用于指示呼叫过程。通常情况下，响应是端对端（除100尝试）。信息(1xx)的响应的主要目的是阻止INVITE请求的重发。</p>
 <p>信息响应包括以下响应：</p>
 <h3 id="100-Trying-尝试"><a href="#100-Trying-尝试" class="headerlink" title="100 Trying (尝试)"></a>100 Trying (尝试)</h3><ul>
@@ -269,11 +309,13 @@
     
     <summary type="html">
     
-      &lt;p&gt;  SIP响应是由一个用户代理服务器(UAS)或SIP服务器生成回复由客户端生成的请求的消息。它可能是一个正式的确认，以防止请求由UAC重发。&lt;/p&gt;
+      &lt;p&gt;  SIP响应是由用户代理服务器(UAS)生成或由客户端生成来回应服务器请求的消息。它是一个正式的回复确认，以防止UAC重发请求。&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;响应可能包含需要一个UAC信息一些额外的头字段&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;响应可能需要包含一些额外的头字段&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;SIP有六个响应
+&lt;li&gt;&lt;p&gt;SIP有六类响应&lt;/p&gt;
+&lt;/li&gt;
+&lt;l
     
     </summary>
     
