@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://firstspark.github.io/"/>
-  <updated>2016-09-12T10:03:03.451Z</updated>
+  <updated>2016-09-14T06:10:34.788Z</updated>
   <id>http://firstspark.github.io/</id>
   
   <author>
@@ -14,6 +14,42 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SIP协议头</title>
+    <link href="http://firstspark.github.io/2016/09/14/sip-message-header/"/>
+    <id>http://firstspark.github.io/2016/09/14/sip-message-header/</id>
+    <published>2016-09-14T06:09:22.000Z</published>
+    <updated>2016-09-14T06:10:34.788Z</updated>
+    
+    <content type="html"><![CDATA[<p> SIP协议头是SIP消息的重要组成部分，是表达信息传达指令的部分。它的结构由一系列报头字段组成。</p>
+<p>在大多数情况下，SIP头域与HTTP报头字段遵循相同的规则。头字段被定义为：字段(Header: field)，其中Header就是用来表示头字段名称，field代表数值，包含着需要的信息。每个字段由一个字段名后跟一个冒号(“：”)和域值(即字段名：域值)。</p>
+<h2 id="SIP协议头-紧凑形式"><a href="#SIP协议头-紧凑形式" class="headerlink" title="SIP协议头 - 紧凑形式"></a>SIP协议头 - 紧凑形式</h2><p>很多常见的SIP报头字段具有一种紧凑的规则形式，其中报头字段名称被表示为一个单一的小写字符。<br><img src="http://img.blog.csdn.net/20160912191420384" alt="SIP Compact Form"><br>SIP报头格式</p>
+<p>下图显示了一个典型的SIP头的结构。<br><img src="http://img.blog.csdn.net/20160913154749288" alt="SIP Header Format"></p>
+<p>根据其在SIP协议中的用法，分类如下：</p>
+<ul>
+<li><p>请求和响应</p>
+</li>
+<li><p>只请求</p>
+</li>
+<li><p>只响应</p>
+</li>
+<li><p>消息体</p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt; SIP协议头是SIP消息的重要组成部分，是表达信息传达指令的部分。它的结构由一系列报头字段组成。&lt;/p&gt;
+&lt;p&gt;在大多数情况下，SIP头域与HTTP报头字段遵循相同的规则。头字段被定义为：字段(Header: field)，其中Header就是用来表示头字段名称，fiel
+    
+    </summary>
+    
+    
+      <category term="-SIP -VOIP" scheme="http://firstspark.github.io/tags/SIP-VOIP/"/>
+    
+  </entry>
   
   <entry>
     <title>SIP协议响应代码</title>
