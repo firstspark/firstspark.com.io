@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://firstspark.github.io/"/>
-  <updated>2016-09-14T08:39:08.343Z</updated>
+  <updated>2016-09-18T14:44:59.493Z</updated>
   <id>http://firstspark.github.io/</id>
   
   <author>
@@ -16,11 +16,136 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>SIP协议中请求与响应消息的头域</title>
+    <title>SIP协议中只有请求才有的头域</title>
+    <link href="http://firstspark.github.io/2016/09/18/sip-request-only-header/"/>
+    <id>http://firstspark.github.io/2016/09/18/sip-request-only-header/</id>
+    <published>2016-09-18T14:43:39.000Z</published>
+    <updated>2016-09-18T14:44:59.493Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Authorization"><a href="#Authorization" class="headerlink" title="Authorization"></a>Authorization</h2><p>该头域用于携带UA的凭据到服务器。</p>
+<p>它可以用于应答一个包含查询信息的401 Unauthorized响应。</p>
+<h2 id="Event"><a href="#Event" class="headerlink" title="Event"></a>Event</h2><p>该头域用于在SUBSCRIBE或NOTIFY方法中来指示哪个事件包正在被使用。</p>
+<ul>
+<li><p>在SUBSCRIBE方法中，它列出了客户想订阅的事件包。</p>
+</li>
+<li><p>在NOTIFY方法中，它列出了包含状态信息的通知事件包。</p>
+</li>
+</ul>
+<h2 id="Join"><a href="#Join" class="headerlink" title="Join"></a>Join</h2><p>该头域用于在INVITE中，请求加入现有的对话（会话）中。</p>
+<ul>
+<li><p>Join头域的参数通过Call-ID来标识一个对话，To，From，Replaces头域都是类似的方式。</p>
+</li>
+<li><p>如果对话只是两个用户代理间点对点的对话，那么Join头域能有效的把两方对话变成多方会议。</p>
+</li>
+<li><p>如果该对话已经是一个会议，那么Join头域可用来添加到会议中。</p>
+</li>
+</ul>
+<h2 id="Proxy-Authorization"><a href="#Proxy-Authorization" class="headerlink" title="Proxy-Authorization"></a>Proxy-Authorization</h2><p>该头域用于携带UA的凭据的请求中。</p>
+<ul>
+<li><p>它可用于答复407 Proxy Authentication Required响应。</p>
+</li>
+<li><p>当代理接收到包含它自己的Proxy-Authorization头域请求时，如果发现它自己就进行请求处理。</p>
+</li>
+<li><p>如果凭证是正确的，所有数据项都保存在请求中，并转发到下一个代理。</p>
+</li>
+</ul>
+<h2 id="Proxy-Require"><a href="#Proxy-Require" class="headerlink" title="Proxy-Require"></a>Proxy-Require</h2><p>该头域用来列出UA需要代理支持的功能和扩展。</p>
+<ul>
+<li><p>如果代理不支持该功能，那么会响应420 Bad Extension ，并包含Unsupported header头域。</p>
+</li>
+<li><p>如果此功能的支持不是必需的，那么可以用Supported字段来代替。</p>
+</li>
+</ul>
+<h2 id="Max-Forwards"><a href="#Max-Forwards" class="headerlink" title="Max-Forwards"></a>Max-Forwards</h2><p>该头域被用于指示该SIP请求可以采取的最大跳数。</p>
+<ul>
+<li><p>标题字段的值是由转发该请求代理服务器来递减。</p>
+</li>
+<li><p>代理服务器如果接收到该头域的数值为0，则放弃该消息，并返回483 Too Many Hops响应。</p>
+</li>
+<li><p>Max-Forwards是请求消息的必须加头域，是RFC3261规定的。</p>
+</li>
+<li><p>建议值是70跳。</p>
+</li>
+</ul>
+<h2 id="Priority"><a href="#Priority" class="headerlink" title="Priority"></a>Priority</h2><p>该头域用于设置UAC请求的紧迫性。可以设置为：不紧急的，正常的，迫切的和最紧急的。</p>
+<h2 id="Refer-To"><a href="#Refer-To" class="headerlink" title="Refer-To"></a>Refer-To</h2><p>该头域被用在REFER请求中，包含被引用的URI或URL资源，是强制性头域。它可能包含从SIP或者SIPS到telURI的任何类型的URI。</p>
+<h2 id="Referred-By"><a href="#Referred-By" class="headerlink" title="Referred-By"></a>Referred-By</h2><p>该头域是用于REFER请求中，是一个可选的头域，并被一个REFER请求来触发。</p>
+<ul>
+<li><p>它提供了触发请求的收件人,并作为REFER消息的发起者。</p>
+</li>
+<li><p>没有签名的Referred-By头域可能会被拒绝，并回应429 Provide Referror响应代码。</p>
+</li>
+</ul>
+<h2 id="Replaces"><a href="#Replaces" class="headerlink" title="Replaces"></a>Replaces</h2><p>Replaces 作用是用一个新的呼叫代替现有呼叫。</p>
+<ul>
+<li><p>一个已经建立会话的UA接收到一个含有Replaces头域的INVITE消息后，接受邀请并发送BYE消息来终止现有的对话，并把现有的对话中的所有资源转接到新的会话上。</p>
+</li>
+<li><p>如果Replaces 字域没有匹配的对话，必须用481 Dialog Does Not Exist来拒绝INVITE请求。</p>
+</li>
+</ul>
+<h2 id="Request-Disposition"><a href="#Request-Disposition" class="headerlink" title="Request-Disposition"></a>Request-Disposition</h2><p>Request-Disposition头域可用于标识请求的服务器,要么proxy,要么 redirect。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Example:</div><div class="line">Request-Disposition: redirect</div></pre></td></tr></table></figure></p>
+<h2 id="Require"><a href="#Require" class="headerlink" title="Require"></a>Require</h2><p>该头域用于作为一个UAC要求UAS能支持处理请求消息的功能与扩展的列表。</p>
+<p>当UAS不接受支持头字段时，会回应带有Unsupported头域的420 Bad Extension响应。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Example:</div><div class="line">Require: rel100</div></pre></td></tr></table></figure></p>
+<h2 id="Route"><a href="#Route" class="headerlink" title="Route"></a>Route</h2><p>该头域被用来提供请求消息的路由信息。</p>
+<ul>
+<li><p>RFC 3261引入了两种类型的路由：严格路由(strict routing)和松散路由(loose routing),它们具有类似含义的名称和相同的IP路由模式。</p>
+</li>
+<li><p>严格路由(strict routing)，代理必须使用在Route头域中的第一个URI来重写Request-URI中，然后转发。</p>
+</li>
+<li><p>在松散路由(loose routing)，代理不重写请求URI，可以转发到Route头域的第一个URI或其他的松散路由。</p>
+</li>
+<li><p>在松散路由(loose routing)，在Request-URI头域被路由之前，请求必须路由通过列表中的每个服务器。</p>
+</li>
+<li><p>严格路由(strict routing)，请求必须按序路由通过列表中的服务器，并在每条中重写Request-URI头域。</p>
+</li>
+<li><p>代理或UAC可以通过lr参数来设置为松散路由(loose routing)。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Example:</div><div class="line">Route: sip:proxy@example.com;lr</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="RAck"><a href="#RAck" class="headerlink" title="RAck"></a>RAck</h2><p>该头域被用于PRACK请求的响应中，用来确认包含有RSEQ头域临时的响应。</p>
+<ul>
+<li>它的值是Cseq的组合和临时响应的RSEQ。</li>
+<li>可靠的序列号是递增的，以明确发送各响应。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Example:</div><div class="line">RAck: 3452337 17 INVITE</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Session-Expires"><a href="#Session-Expires" class="headerlink" title="Session-Expires"></a>Session-Expires</h2><p>该头域用于指定会话的到期时间。</p>
+<ul>
+<li><p>要延长会话时间，可以发送一个re-INVITE请求或者UPDATE消息，包含新的Session-Expires头域。</p>
+</li>
+<li><p>一旦呼叫已经建立即进入计时。</p>
+</li>
+</ul>
+<h2 id="SIP-If-Match"><a href="#SIP-If-Match" class="headerlink" title="SIP-If-Match"></a>SIP-If-Match</h2><p>该头域是SIP发布机制的一部分。它包括在刷新，修改或删除先前公布的PUBLISH请求状态。</p>
+<ul>
+<li><p>2xx响应中的SIP-ETag头域标识之前PUBLISH消息的状态信息。</p>
+</li>
+<li><p>如果标记不再有效，则服务器将返回412 Conditional Request Failed响应。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Example:</div><div class="line">SIP-If-Match: 56jforRr1pd</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Subscription-State"><a href="#Subscription-State" class="headerlink" title="Subscription-State"></a>Subscription-State</h2><p>该头域是一个NOTIFY请求所需的头字段。它表示订阅的当前状态。数值包括active, pending, or terminated.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Example:</div><div class="line">Subscription-State: terminated; reason=rejected</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Authorization&quot;&gt;&lt;a href=&quot;#Authorization&quot; class=&quot;headerlink&quot; title=&quot;Authorization&quot;&gt;&lt;/a&gt;Authorization&lt;/h2&gt;&lt;p&gt;该头域用于携带UA的凭据到服务器。&lt;/p&gt;
+&lt;p&gt;它
+    
+    </summary>
+    
+    
+      <category term="SIP" scheme="http://firstspark.github.io/tags/SIP/"/>
+    
+      <category term="VOIP" scheme="http://firstspark.github.io/tags/VOIP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SIP协议中请求与响应消息都有的头域</title>
     <link href="http://firstspark.github.io/2016/09/14/sip-request-response-header/"/>
     <id>http://firstspark.github.io/2016/09/14/sip-request-response-header/</id>
     <published>2016-09-14T08:37:00.000Z</published>
-    <updated>2016-09-14T08:39:08.343Z</updated>
+    <updated>2016-09-18T06:14:25.629Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Accept"><a href="#Accept" class="headerlink" title="Accept"></a>Accept</h2><p>Accept 头域用于指示在响应中能够接收的媒体的类型。</p>
 <ul>
