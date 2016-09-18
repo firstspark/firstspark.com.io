@@ -145,7 +145,7 @@
     <link href="http://firstspark.github.io/2016/09/14/sip-request-response-header/"/>
     <id>http://firstspark.github.io/2016/09/14/sip-request-response-header/</id>
     <published>2016-09-14T08:37:00.000Z</published>
-    <updated>2016-09-18T06:14:25.629Z</updated>
+    <updated>2016-09-18T14:56:55.679Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Accept"><a href="#Accept" class="headerlink" title="Accept"></a>Accept</h2><p>Accept 头域用于指示在响应中能够接收的媒体的类型。</p>
 <ul>
@@ -291,7 +291,9 @@
     </summary>
     
     
-      <category term="-SIP -VOIP" scheme="http://firstspark.github.io/tags/SIP-VOIP/"/>
+      <category term="SIP" scheme="http://firstspark.github.io/tags/SIP/"/>
+    
+      <category term="VOIP" scheme="http://firstspark.github.io/tags/VOIP/"/>
     
   </entry>
   
@@ -300,7 +302,7 @@
     <link href="http://firstspark.github.io/2016/09/14/sip-message-header/"/>
     <id>http://firstspark.github.io/2016/09/14/sip-message-header/</id>
     <published>2016-09-14T06:09:22.000Z</published>
-    <updated>2016-09-14T06:10:34.788Z</updated>
+    <updated>2016-09-18T14:57:45.252Z</updated>
     
     <content type="html"><![CDATA[<p> SIP协议头是SIP消息的重要组成部分，是表达信息传达指令的部分。它的结构由一系列报头字段组成。</p>
 <p>在大多数情况下，SIP头域与HTTP报头字段遵循相同的规则。头字段被定义为：字段(Header: field)，其中Header就是用来表示头字段名称，field代表数值，包含着需要的信息。每个字段由一个字段名后跟一个冒号(“：”)和域值(即字段名：域值)。</p>
@@ -327,7 +329,9 @@
     </summary>
     
     
-      <category term="-SIP -VOIP" scheme="http://firstspark.github.io/tags/SIP-VOIP/"/>
+      <category term="SIP" scheme="http://firstspark.github.io/tags/SIP/"/>
+    
+      <category term="VOIP" scheme="http://firstspark.github.io/tags/VOIP/"/>
     
   </entry>
   
@@ -336,7 +340,7 @@
     <link href="http://firstspark.github.io/2016/09/12/sip-call-code/"/>
     <id>http://firstspark.github.io/2016/09/12/sip-call-code/</id>
     <published>2016-09-12T01:17:36.000Z</published>
-    <updated>2016-09-12T10:03:03.451Z</updated>
+    <updated>2016-09-18T14:57:24.880Z</updated>
     
     <content type="html"><![CDATA[<p>  SIP响应是由用户代理服务器(UAS)生成或由客户端生成来回应服务器请求的消息。它是一个正式的回复确认，以防止UAC重发请求。</p>
 <ul>
@@ -636,7 +640,9 @@
     </summary>
     
     
-      <category term="-SIP -VOIP" scheme="http://firstspark.github.io/tags/SIP-VOIP/"/>
+      <category term="SIP" scheme="http://firstspark.github.io/tags/SIP/"/>
+    
+      <category term="VOIP" scheme="http://firstspark.github.io/tags/VOIP/"/>
     
   </entry>
   
@@ -645,7 +651,7 @@
     <link href="http://firstspark.github.io/2016/09/09/sip-basic-call-flow/"/>
     <id>http://firstspark.github.io/2016/09/09/sip-basic-call-flow/</id>
     <published>2016-09-09T04:47:36.000Z</published>
-    <updated>2016-09-09T04:49:56.112Z</updated>
+    <updated>2016-09-18T14:57:13.972Z</updated>
     
     <content type="html"><![CDATA[<h2 id="SIP呼叫流程"><a href="#SIP呼叫流程" class="headerlink" title="SIP呼叫流程"></a>SIP呼叫流程</h2><p> 下图显示了一个SIP会话的基本呼叫流程。<br><img src="http://img.blog.csdn.net/20160909113447585" alt="SIP Call Flow"></p>
 <p>下面是上述呼叫流程的详细解释：</p>
@@ -697,7 +703,9 @@
     </summary>
     
     
-      <category term="-SIP -VOIP" scheme="http://firstspark.github.io/tags/SIP-VOIP/"/>
+      <category term="SIP" scheme="http://firstspark.github.io/tags/SIP/"/>
+    
+      <category term="VOIP" scheme="http://firstspark.github.io/tags/VOIP/"/>
     
   </entry>
   
@@ -706,7 +714,7 @@
     <link href="http://firstspark.github.io/2016/09/06/sip-network-elements/"/>
     <id>http://firstspark.github.io/2016/09/06/sip-network-elements/</id>
     <published>2016-09-06T14:12:08.000Z</published>
-    <updated>2016-09-07T06:22:54.336Z</updated>
+    <updated>2016-09-18T14:57:52.608Z</updated>
     
     <content type="html"><![CDATA[<p>SIP协议定义了一些实体，来帮助创建SIP网络。在SIP网络内每个网络元件被标识SIP URI(统一资源标识符)，它是像一个地址或标识。下面是网络元素：</p>
 <ul>
@@ -779,7 +787,9 @@
     </summary>
     
     
-      <category term="-SIP -VOIP" scheme="http://firstspark.github.io/tags/SIP-VOIP/"/>
+      <category term="SIP" scheme="http://firstspark.github.io/tags/SIP/"/>
+    
+      <category term="VOIP" scheme="http://firstspark.github.io/tags/VOIP/"/>
     
   </entry>
   
@@ -788,7 +798,7 @@
     <link href="http://firstspark.github.io/2016/09/06/sip-introduction/"/>
     <id>http://firstspark.github.io/2016/09/06/sip-introduction/</id>
     <published>2016-09-06T09:13:53.000Z</published>
-    <updated>2016-09-06T10:14:13.958Z</updated>
+    <updated>2016-09-18T14:57:32.641Z</updated>
     
     <content type="html"><![CDATA[<p>会话发起协议（SIP-Session Initiation Protocol ）是在VoIP技术中最常用的协议之一。它是一种应用层协议，它与其它应用层协议一起工作，以通过互联网控制多媒体通信会话。</p>
 <h2 id="VoIP技术"><a href="#VoIP技术" class="headerlink" title="VoIP技术"></a>VoIP技术</h2><p>在这之前，让我们先了解有关VoIP的几个要点。</p>
@@ -834,7 +844,9 @@
     </summary>
     
     
-      <category term="-SIP -VOIP" scheme="http://firstspark.github.io/tags/SIP-VOIP/"/>
+      <category term="SIP" scheme="http://firstspark.github.io/tags/SIP/"/>
+    
+      <category term="VOIP" scheme="http://firstspark.github.io/tags/VOIP/"/>
     
   </entry>
   
@@ -843,7 +855,7 @@
     <link href="http://firstspark.github.io/2016/09/05/sip-message/"/>
     <id>http://firstspark.github.io/2016/09/05/sip-message/</id>
     <published>2016-09-05T14:30:54.000Z</published>
-    <updated>2016-09-06T09:15:20.928Z</updated>
+    <updated>2016-09-18T14:57:39.709Z</updated>
     
     <content type="html"><![CDATA[<p>SIP消息有两种类型：请求和响应。</p>
 <ul>
@@ -999,7 +1011,9 @@
     </summary>
     
     
-      <category term="-SIP -VOIP" scheme="http://firstspark.github.io/tags/SIP-VOIP/"/>
+      <category term="SIP" scheme="http://firstspark.github.io/tags/SIP/"/>
+    
+      <category term="VOIP" scheme="http://firstspark.github.io/tags/VOIP/"/>
     
   </entry>
   
